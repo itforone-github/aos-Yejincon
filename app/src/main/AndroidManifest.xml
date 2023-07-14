@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /><!-- 이미지 권한설정 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /><!-- 비디오 권한설정 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" /><!-- 오디오 권한설정 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true"
+        />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="co.kr.itforone.yejincon.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <!-- resource 디렉토리에 xml 디렉토리를 만들고 file_paths 파일 만들어주세요 -->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+        <activity android:name=".WebActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            ></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="http://itforone.co.kr/~yejincon"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <!-- 크롭 이미지 액티비티 입니다 -->
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
+    </application>
+    <queries>
+        <package android:name="com.kakao.talk" /> <!-- 카카오톡 -->
+        <package android:name="com.shcard.smartpay" /> <!-- 신한페이판 -->
+        <package android:name="com.shinhancard.smartshinhan" /> <!-- 신한페이판-공동인증서 -->
+        <package android:name="com.hyundaicard.appcard" /> <!-- 현대카드 -->
+        <package android:name="com.lumensoft.touchenappfree" /> <!-- 현대카드-공동인증서 -->
+        <package android:name="kr.co.samsungcard.mpocket" /> <!-- 삼성카드 -->
+        <package android:name="nh.smart.nhallonepay" /> <!-- 올원페이 -->
+        <package android:name="com.kbcard.cxh.appcard" /> <!-- KB Pay -->
+        <package android:name="com.kbstar.liivbank" /> <!-- Liiv(KB국민은행) -->
+        <package android:name="com.kbstar.reboot" /> <!-- Liiv Reboot(KB국민은행) -->
+        <package android:name="kvp.jjy.MispAndroid320" /> <!-- ISP/페이북 -->
+        <package android:name="com.lcacApp" /> <!-- 롯데카드 -->
+        <package android:name="com.hanaskcard.paycla" /> <!-- 하나카드 -->
+        <package android:name="kr.co.hanamembers.hmscustomer" /> <!-- 하나멤버스 -->
+        <package android:name="kr.co.citibank.citimobile" /> <!-- 씨티모바일 -->
+        <package android:name="com.wooricard.wpay" /> <!-- 우리페이 -->
+        <package android:name="com.wooricard.smartapp" /> <!-- 우리카드 -->
+        <package android:name="com.wooribank.smart.npib" /> <!-- 우리WON뱅킹 -->
+        <package android:name="viva.republica.toss" /> <!-- 토스뱅크 -->
+        <package android:name="com.nhnent.payapp" /> <!-- PAYCO -->
+        <package android:name="com.ssg.serviceapp.android.egiftcertificate" /> <!-- SSGPAY -->
+        <package android:name="com.kakao.talk" /> <!-- 카카오페이 -->
+        <package android:name="com.nhn.android.search" /> <!-- 네이버페이 -->
+        <package android:name="com.lottemembers.android" /> <!-- L.POINT -->
+        <package android:name="com.samsung.android.spay" /> <!-- 삼성페이 -->
+        <package android:name="com.samsung.android.spaylite" /> <!-- 삼성페이 -->
+        <package android:name="com.lge.lgpay" /> <!-- 엘지페이 -->
+        <package android:name="com.lguplus.paynow" /> <!-- 페이나우 -->
+        <package android:name="com.kftc.bankpay.android" /> <!-- 뱅크페이 -->
+        <package android:name="com.TouchEn.mVaccine.webs" /> <!-- TouchEn mVaccine (신한) -->
+        <package android:name="kr.co.shiftworks.vguardweb" /> <!-- V-Guard (삼성) -->
+        <package android:name="com.ahnlab.v3mobileplus" /> <!-- V3 (NH, 현대) -->
+    </queries>
+</manifest>
